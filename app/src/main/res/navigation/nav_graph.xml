@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcome">
+
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.alekseykostyunin.hw9_localization.Welcome"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcome_to_poll"
+            app:destination="@id/poll"
+            app:enterAnim="@anim/enter_animation_left"
+            app:exitAnim="@anim/exit_animation_left"
+            app:popEnterAnim="@anim/enter_animation_right"
+            app:popExitAnim="@anim/exit_animation_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/poll"
+        android:name="com.alekseykostyunin.hw9_localization.Poll"
+        tools:layout="@layout/fragment_poll">
+
+        <action
+            android:id="@+id/action_poll_to_result"
+            app:destination="@id/result"
+            app:enterAnim="@anim/enter_animation_left"
+            app:exitAnim="@anim/exit_animation_left"
+            app:popEnterAnim="@anim/enter_animation_right"
+            app:popExitAnim="@anim/exit_animation_right"
+            app:popUpTo="@id/welcome"
+            />
+        <action
+            android:id="@+id/action_poll_to_welcome"
+            app:destination="@id/welcome"
+            app:enterAnim="@anim/enter_animation_right"
+            app:exitAnim="@anim/exit_animation_right"
+            app:popUpTo="@id/welcome"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/result"
+        android:name="com.alekseykostyunin.hw9_localization.Result"
+        tools:layout="@layout/fragment_result">
+
+        <action
+            android:id="@+id/action_result_to_welcome"
+            app:destination="@id/poll"
+            app:enterAnim="@anim/enter_animation_right"
+            app:exitAnim="@anim/exit_animation_right"
+            app:popEnterAnim="@anim/enter_animation_right"
+            app:popExitAnim="@anim/exit_animation_right"
+            app:popUpTo="@id/welcome"
+            />
+        <argument
+            android:name="TAG_RESULT"
+            app:argType="integer" />
+
+    </fragment>
+
+</navigation>
